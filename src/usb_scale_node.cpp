@@ -33,6 +33,7 @@ void UsbScaleNode::publishScale()
     sl.weight = weight;
     sl.units = units;
     sl.message = msg;
+    sl.header.stamp = ros::Time::now();
     scale_pub_.publish(sl);
   }
   else
@@ -47,7 +48,7 @@ int main(int argc, char** argv)
 
   UsbScaleNode scn;
 
-  ros::Rate loop_rate(5);
+  ros::Rate loop_rate(20);
 
   while (ros::ok())
   {
